@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CD{% endblock %}
+
+{% block body %}
+    <h1>CD</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ c_d.id }}</td>
+            </tr>
+            <tr>
+                <th>ReferenceNumber</th>
+                <td>{{ c_d.referenceNumber }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ c_d.title }}</td>
+            </tr>
+            <tr>
+                <th>PublicationDate</th>
+                <td>{{ c_d.publicationDate ? c_d.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>InCollectionDate</th>
+                <td>{{ c_d.inCollectionDate ? c_d.inCollectionDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Availability</th>
+                <td>{{ c_d.availability ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Publisher</th>
+                <td>{{ c_d.publisher }}</td>
+            </tr>
+            <tr>
+                <th>IsPinned</th>
+                <td>{{ c_d.isPinned ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ c_d.description }}</td>
+            </tr>
+            <tr>
+                <th>Illustration</th>
+                <td>{{ c_d.illustration }}</td>
+            </tr>
+            <tr>
+                <th>TotalDuration</th>
+                <td>{{ c_d.totalDuration ? c_d.totalDuration|date('H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('c_d_index') }}">back to list</a>
+
+    <a href="{{ path('c_d_edit', {'id': c_d.id}) }}">edit</a>
+
+    {{ include('c_d/_delete_form.html.twig') }}
+{% endblock %}

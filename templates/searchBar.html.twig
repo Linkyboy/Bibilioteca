@@ -1,0 +1,8 @@
+{{ form_start(form,{'attr': {'class': 'form-inline'}}) }}
+    <li class="page-item">
+        {{form_widget(form.query)}}
+    </li>
+    <li class="page-item">
+        {{form_widget(form.Q)}}
+    </li>
+{{ form_end(form) }}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryPreviewController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h3>{{category.categoryName}}</h3>
+        <p>{{category.description}}</p>
+        <h4>Artist list</h4>
+        <ul class="list-group">
+            {% for a in artists %}
+                <a href="{{path('artist_preview',{id:a.id})}}" class="list-group-item">{{a.lastName~' '~a.firstName}}</a>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BookPreviewController!
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+        <h2 class="text-center mtr-5">{{book.title}}</h2>
+        <div class="text-center">
+            <img class="justify-content-center" src="{{asset(book.illustration)}}"/>
+        </div>
+        <h2>Infos</h2>
+		<table class="table">
+            <tr>   
+                <th scope="col">Author </th>
+                <td><a href="{{path('artist_preview',{id:artist.id})}}">{{artist.firstName~" "~artist.lastName}}</a></td>
+                
+            </tr>
+            <tr>   
+                <th scope="col">Publication date </th>
+                <td>{{book.publicationDate|date("d-m-Y")}}</td>
+            </tr>
+            <tr>   
+                <th scope="col">In Collection date </th>
+                <td>{{book.inCollectionDate|date('d-m-Y')}}</td>
+            </tr>
+            <tr>   
+                <th scope="col">Publisher  </th>
+                <td>{{book.publisher}}</td>
+            </tr>
+            <tr>   
+                <th scope="col">Description  </th>
+                <td>{{book.description}}</td>
+            </tr>
+            <tr>   
+                <th scope="col">Pages  </th>
+                <td>{{book.pages}}</td>
+            </tr>
+            <tr>   
+                <th scope="col">ISBN </th>
+                <td>{{book.isbn}}</td>
+            </tr>
+            <tr>   
+                <th scope="col">Available </th>
+                <td> {{ book|AvailableCopy|raw }}</td>
+            </tr>
+		</div>
+	{% endblock %}

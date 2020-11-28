@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BookBrowserController!{% endblock %}
+
+{% block body %}
+ 
+    {{ render(controller('App\\Controller\\DocumentBrowserController::searchBar',{docType:docType})) }}
+    {{ knp_pagination_render(documents) }}
+    
+{% endblock %}

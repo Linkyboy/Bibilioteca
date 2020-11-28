@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DocumentBorrowController!{% endblock %}
+
+{% block body %}
+    <div class="container mt-5 border p-5">
+    {% if verificationState == false %}
+        
+            <h2 class="text-center">Are you sure that you want to borrow?</h2>
+            <h3 class="text-center"> {{document.title}} </h3>
+            <div class="text-center">
+                <img class="justify-content-center" src="{{asset(document.illustration)}}"/>
+            </div>
+            <div class="text-center">
+                <b><h4>Expected Return Date :  {{returnDate|date("d-m-Y")}}</h4></b>
+                {{render(controller("App\\Controller\\DocumentBorrowController::validationForm",{id:document.id}))}}
+                <a class="btn btn-danger btn-block mt-1" href="{{path('homeindex')}}">No</a>
+            </div>
+        
+    {% else %}
+        <h1 class="text-success text-center"> {{message}}</h1>
+    {% endif %}
+    </div>
+{% endblock %}

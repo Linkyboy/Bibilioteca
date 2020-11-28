@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit DVD{% endblock %}
+
+{% block body %}
+    <h1>Edit DVD</h1>
+
+    {{ include('d_v_d/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('d_v_d_index') }}">back to list</a>
+
+    {{ include('d_v_d/_delete_form.html.twig') }}
+{% endblock %}

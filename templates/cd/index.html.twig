@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CD index{% endblock %}
+
+{% block body %}
+    <h1>CD index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ReferenceNumber</th>
+                <th>Title</th>
+                <th>PublicationDate</th>
+                <th>InCollectionDate</th>
+                <th>Availability</th>
+                <th>Publisher</th>
+                <th>IsPinned</th>
+                <th>Description</th>
+                <th>Illustration</th>
+                <th>TotalDuration</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for c_d in c_ds %}
+            <tr>
+                <td>{{ c_d.id }}</td>
+                <td>{{ c_d.referenceNumber }}</td>
+                <td>{{ c_d.title }}</td>
+                <td>{{ c_d.publicationDate ? c_d.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ c_d.inCollectionDate ? c_d.inCollectionDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ c_d.availability ? 'Yes' : 'No' }}</td>
+                <td>{{ c_d.publisher }}</td>
+                <td>{{ c_d.isPinned ? 'Yes' : 'No' }}</td>
+                <td>{{ c_d.description }}</td>
+                <td>{{ c_d.illustration }}</td>
+                <td>{{ c_d.totalDuration ? c_d.totalDuration|date('H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('c_d_show', {'id': c_d.id}) }}">show</a>
+                    <a href="{{ path('c_d_edit', {'id': c_d.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('c_d_new') }}">Create new</a>
+{% endblock %}

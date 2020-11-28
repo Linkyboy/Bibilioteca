@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DVD{% endblock %}
+
+{% block body %}
+    <h1>DVD</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ d_v_d.id }}</td>
+            </tr>
+            <tr>
+                <th>ReferenceNumber</th>
+                <td>{{ d_v_d.referenceNumber }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ d_v_d.title }}</td>
+            </tr>
+            <tr>
+                <th>PublicationDate</th>
+                <td>{{ d_v_d.publicationDate ? d_v_d.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>InCollectionDate</th>
+                <td>{{ d_v_d.inCollectionDate ? d_v_d.inCollectionDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Availability</th>
+                <td>{{ d_v_d.availability ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Publisher</th>
+                <td>{{ d_v_d.publisher }}</td>
+            </tr>
+            <tr>
+                <th>IsPinned</th>
+                <td>{{ d_v_d.isPinned ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ d_v_d.description }}</td>
+            </tr>
+            <tr>
+                <th>Illustration</th>
+                <td>{{ d_v_d.illustration }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ d_v_d.duration ? d_v_d.duration|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HasBonus</th>
+                <td>{{ d_v_d.hasBonus ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('d_v_d_index') }}">back to list</a>
+
+    <a href="{{ path('d_v_d_edit', {'id': d_v_d.id}) }}">edit</a>
+
+    {{ include('d_v_d/_delete_form.html.twig') }}
+{% endblock %}

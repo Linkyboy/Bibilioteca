@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book{% endblock %}
+
+{% block body %}
+    <h1>Book</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ book.id }}</td>
+            </tr>
+            <tr>
+                <th>ReferenceNumber</th>
+                <td>{{ book.referenceNumber }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ book.title }}</td>
+            </tr>
+            <tr>
+                <th>PublicationDate</th>
+                <td>{{ book.publicationDate ? book.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>InCollectionDate</th>
+                <td>{{ book.inCollectionDate ? book.inCollectionDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Availability</th>
+                <td>{{ book.availability ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Publisher</th>
+                <td>{{ book.publisher }}</td>
+            </tr>
+            <tr>
+                <th>IsPinned</th>
+                <td>{{ book.isPinned ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ book.description }}</td>
+            </tr>
+            <tr>
+                <th>Illustration</th>
+                <td>{{ book.illustration }}</td>
+            </tr>
+            <tr>
+                <th>Pages</th>
+                <td>{{ book.pages }}</td>
+            </tr>
+            <tr>
+                <th>OriginalLanguage</th>
+                <td>{{ book.originalLanguage }}</td>
+            </tr>
+            <tr>
+                <th>Isbn</th>
+                <td>{{ book.isbn }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('book_index') }}">back to list</a>
+
+    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+
+    {{ include('book/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CD{% endblock %}
+
+{% block body %}
+    <h1>Create new CD</h1>
+
+    {{ include('c_d/_form.html.twig') }}
+
+    <a href="{{ path('c_d_index') }}">back to list</a>
+{% endblock %}

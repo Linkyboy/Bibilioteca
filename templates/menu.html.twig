@@ -1,0 +1,19 @@
+{% block menu %} 
+    <nav id="menu">
+        <ul>
+            <li><a href="{{path("homeindex")}}">Biblioteca</a></li>
+            <li><a href="{{path('browse_documents',{docType:"books"})}}">Books</a></li>
+            <li><a href="{{path('browse_documents',{docType:"cd"})}}">CD's</a></li>
+            <li><a href="{{path('browse_documents',{docType:"dvd"})}}">DVD's</a></li>
+            <li><a  href="{{path('artist_browser')}}">Artists</a></li>
+            <li><a  href="{{path('info')}}">About us</a></li>
+            {% if  app.user %}
+                <li><a href="{{path('user_page')}}" >My account</a></li>
+                <li><a  href="{{path('app_logout')}}" >Logout</a></li>
+            {% else %}
+                <li><a  href="{{path('app_login')}}"> Login </a></li>
+                <li><a  href="{{path('homeregister')}}"> Register </a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock  %}

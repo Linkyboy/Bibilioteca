@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5">
+		<h1 class="text-center">Our CD selection
+		</h1>
+
+		{% for key,b in cds %}
+			{% if key %3== 0 %}
+				<div class="card-group">
+				{% endif %}
+				<div class="card " style="max-width: 33%;">
+					<img src="{{asset(b.illustration)}}" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">{{b.title}}</h5>
+						<p class="card-text">{{b.description}}</p>
+						<a href="{{path('cd_preview',{id:b.id})}}" class="btn btn-primary">More </a>
+					</div>
+				</div>
+				{% if key %3== 2 %}
+					</div>
+				{% endif %}
+		{% endfor %}
+
+			</div>
+		{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DVD index{% endblock %}
+
+{% block body %}
+    <h1>DVD index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ReferenceNumber</th>
+                <th>Title</th>
+                <th>PublicationDate</th>
+                <th>InCollectionDate</th>
+                <th>Availability</th>
+                <th>Publisher</th>
+                <th>IsPinned</th>
+                <th>Description</th>
+                <th>Illustration</th>
+                <th>Duration</th>
+                <th>HasBonus</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for d_v_d in d_v_ds %}
+            <tr>
+                <td>{{ d_v_d.id }}</td>
+                <td>{{ d_v_d.referenceNumber }}</td>
+                <td>{{ d_v_d.title }}</td>
+                <td>{{ d_v_d.publicationDate ? d_v_d.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ d_v_d.inCollectionDate ? d_v_d.inCollectionDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ d_v_d.availability ? 'Yes' : 'No' }}</td>
+                <td>{{ d_v_d.publisher }}</td>
+                <td>{{ d_v_d.isPinned ? 'Yes' : 'No' }}</td>
+                <td>{{ d_v_d.description }}</td>
+                <td>{{ d_v_d.illustration }}</td>
+                <td>{{ d_v_d.duration ? d_v_d.duration|date('H:i:s') : '' }}</td>
+                <td>{{ d_v_d.hasBonus ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('d_v_d_show', {'id': d_v_d.id}) }}">show</a>
+                    <a href="{{ path('d_v_d_edit', {'id': d_v_d.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('d_v_d_new') }}">Create new</a>
+{% endblock %}

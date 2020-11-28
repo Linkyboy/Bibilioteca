@@ -3,9 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        {{ encore_entry_link_tags('global') }} 
         {% block stylesheets %}{% endblock %}
+       
+        
     </head>
     <body>
+        {% include "menu.html.twig" %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
